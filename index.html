@@ -42,9 +42,7 @@
 
   /* Dot pattern background for content slides */
   .slide-dots {
-    background-image: radial-gradient(circle, #d8d8d8 0.8px, transparent 0.8px);
-    background-size: 24px 24px;
-    background-position: 12px 12px;
+    /* dots removed */
   }
 
   /* Top gradient bar */
@@ -72,6 +70,9 @@
     width: 110px; height: 24px;
     background: url('logo.png') no-repeat right center/contain;
   }
+
+  /* Shared slide description */
+  .slide-desc { text-align: center; font-weight: 600; }
 
   /* Shared badge */
   .badge {
@@ -656,7 +657,7 @@
     <h2>Arquitetura da Plataforma</h2>
     <span class="badge">Ecossistema Integrado</span>
   </div>
-  <p class="slide-desc">M&uacute;ltiplas fontes de dados regulat&oacute;rios convergem para a SELIA, que entrega capacidades inteligentes integradas para equipes de regula&ccedil;&atilde;o.</p>
+  <p class="slide-desc">Múltiplas fontes de dados regulatórios convergem para a SELIA, que entrega <strong>capacidades inteligentes integradas</strong> para equipes de regulação.</p>
 
   <div class="diagram-container">
     <div class="section-label">Fontes de Dados Regulat&oacute;rios</div>
@@ -789,7 +790,7 @@
     <span class="badge">M&oacute;dulo</span>
     <h2>Portal Regulat&oacute;rio</h2>
   </div>
-  <p class="slide-desc">Hub centralizado com newsletters di&aacute;rias, reuni&otilde;es da ANEEL, sess&otilde;es p&uacute;blicas e Di&aacute;rio Oficial da Uni&atilde;o.</p>
+  <p class="slide-desc"><strong>Hub centralizado</strong> com newsletters diárias, reuniões da ANEEL, sessões públicas e Diário Oficial da União.</p>
   <div class="callout-container">
     <img src="prints_mauricio/portal_home.png" alt="Portal Regulat&oacute;rio Home">
   </div>
@@ -805,7 +806,7 @@
     <span class="badge">M&oacute;dulo</span>
     <h2>Portal &mdash; Chat Integrado</h2>
   </div>
-  <p class="slide-desc">Assistente IA contextualizado ao conte&uacute;do do portal. Fa&ccedil;a perguntas sobre newsletters, reuni&otilde;es e publica&ccedil;&otilde;es do DOU.</p>
+  <p class="slide-desc">Assistente IA <strong>contextualizado ao conteúdo do portal</strong>. Faça perguntas sobre newsletters, reuniões e publicações do DOU.</p>
   <div class="callout-container">
     <img src="prints_mauricio/portal_chat_interno.png" alt="Portal Chat Integrado">
   </div>
@@ -850,7 +851,7 @@
     <span class="badge">M&oacute;dulo</span>
     <h2>Portal &mdash; Reuni&otilde;es ANEEL e Sess&otilde;es P&uacute;blicas</h2>
   </div>
-  <p class="slide-desc">Resumos autom&aacute;ticos de reuni&otilde;es da diretoria da ANEEL e acompanhamento de sess&otilde;es p&uacute;blicas de distribui&ccedil;&atilde;o de processos.</p>
+  <p class="slide-desc"><strong>Resumos automáticos</strong> de reuniões da diretoria da ANEEL e acompanhamento de sessões públicas de distribuição de processos.</p>
   <div class="dual-container">
     <div class="dual-panel pink-header" style="flex: 1.4;">
       <div class="dual-panel-header">
@@ -879,7 +880,7 @@
     <span class="badge">Chat IA</span>
     <h2>Chat Regulat&oacute;rio &mdash; 84 Documentos Indexados</h2>
   </div>
-  <p class="slide-desc">Assistente IA com RAG sobre todo o acervo regulat&oacute;rio: PRODIST, PRORET, REN 1.000, leis e decretos. Filtre por documento para respostas direcionadas.</p>
+  <p class="slide-desc">Assistente IA sobre <strong>todo o acervo regulatório</strong>: PRODIST, PRORET, REN 1.000, leis e decretos. Filtre por documento para respostas direcionadas.</p>
   <div class="callout-container">
     <img src="prints_mauricio/chat_filtros.png" alt="Chat Regulat&oacute;rio Filtros">
   </div>
@@ -895,7 +896,7 @@
     <span class="badge">Chat IA</span>
     <h2>Chat &mdash; Deep Search e Fontes Originais</h2>
   </div>
-  <p class="slide-desc">Modo Deep Search para consultas complexas com racioc&iacute;nio aprofundado. Cada resposta indica os trechos originais dos documentos que basearam a resposta.</p>
+  <p class="slide-desc">Modo <strong>Deep Search</strong> para consultas complexas com raciocínio aprofundado. Cada resposta indica os <strong>trechos originais dos documentos</strong> que basearam a resposta.</p>
   <div class="dual-container">
     <div class="dual-panel">
       <div class="dual-panel-header">
@@ -924,7 +925,7 @@
     <span class="badge">An&aacute;lise de Dados</span>
     <h2>Agente BDGD &mdash; Perguntas em Linguagem Natural</h2>
   </div>
-  <p class="slide-desc">Pergunte livremente sobre qualquer dado da BDGD. O agente seleciona automaticamente a ferramenta adequada entre 14 dispon&iacute;veis.</p>
+  <p class="slide-desc"><strong>Pergunte livremente</strong> sobre qualquer dado da BDGD. O agente seleciona automaticamente a ferramenta adequada entre 14 disponíveis.</p>
   <div class="dual-container">
     <div class="dual-panel">
       <div class="dual-panel-header">
@@ -953,7 +954,7 @@
     <span class="badge">An&aacute;lise de Dados</span>
     <h2>Agente BDGD &mdash; Respostas com Gr&aacute;ficos</h2>
   </div>
-  <p class="slide-desc">Gr&aacute;ficos interativos gerados automaticamente a partir dos dados da BDGD. An&aacute;lises comparativas, s&eacute;ries temporais e cruzamento com outros indicadores.</p>
+  <p class="slide-desc"><strong>Gráficos interativos</strong> gerados automaticamente a partir dos dados da BDGD. Análises comparativas, séries temporais e cruzamento com outros indicadores.</p>
   <div class="dual-container">
     <div class="dual-panel">
       <div class="dual-panel-header">
@@ -982,7 +983,7 @@
     <span class="badge">Diretores ANEEL</span>
     <h2>Diretores ANEEL &mdash; Vis&atilde;o Geral</h2>
   </div>
-  <p class="slide-desc">61.372 processos de diretores analisados. Distribui&ccedil;&atilde;o tem&aacute;tica, taxas de aprova&ccedil;&atilde;o, tipos de atos administrativos e processos recentes.</p>
+  <p class="slide-desc"><strong>61.372 processos</strong> de diretores analisados. Distribuição temática, taxas de aprovação, tipos de atos administrativos e processos recentes.</p>
   <div class="callout-container">
     <img src="screenshots/06_diretores.png" alt="Diretores ANEEL Vis&atilde;o Geral">
   </div>
@@ -998,7 +999,7 @@
     <span class="badge">Diretores ANEEL</span>
     <h2>Diretores &mdash; Chat de An&aacute;lise</h2>
   </div>
-  <p class="slide-desc">Pergunte sobre posicionamentos, vota&ccedil;&otilde;es e padr&otilde;es decis&oacute;rios dos diretores. Filtre por processo espec&iacute;fico para an&aacute;lises direcionadas.</p>
+  <p class="slide-desc">Pergunte sobre <strong>posicionamentos, votações e padrões decisórios</strong> dos diretores. Filtre por processo específico para análises direcionadas.</p>
   <div class="callout-container">
     <img src="prints_mauricio/dir_chat.png" alt="Diretores Chat">
   </div>
@@ -1014,7 +1015,7 @@
     <span class="badge">Diretores ANEEL</span>
     <h2>Diretores &mdash; Transcri&ccedil;&otilde;es de Reuni&otilde;es</h2>
   </div>
-  <p class="slide-desc">Transcri&ccedil;&atilde;o autom&aacute;tica com identifica&ccedil;&atilde;o de falantes e timestamps. Mais de 100 horas de reuni&otilde;es transcritas e indexadas por processo.</p>
+  <p class="slide-desc"><strong>Transcrição automática</strong> com identificação de falantes e timestamps. Mais de <strong>100 horas</strong> de reuniões transcritas e indexadas por processo.</p>
   <div class="callout-container">
     <img src="prints_mauricio/dir_transcricoes.png" alt="Diretores Transcrições">
   </div>
@@ -1030,7 +1031,7 @@
     <span class="badge">Diretores ANEEL</span>
     <h2>Diretores &mdash; Processos e Votos</h2>
   </div>
-  <p class="slide-desc">Acompanhamento de processos ao longo de m&uacute;ltiplas reuni&otilde;es. Registro completo do voto e discurso de cada diretor.</p>
+  <p class="slide-desc">Acompanhamento de processos ao longo de múltiplas reuniões. <strong>Registro completo do voto e discurso</strong> de cada diretor.</p>
   <div class="dual-container">
     <div class="dual-panel">
       <div class="dual-panel-header">
@@ -1059,7 +1060,7 @@
     <span class="badge">M&oacute;dulo</span>
     <h2>SEI / ANEEL &mdash; Processos Administrativos</h2>
   </div>
-  <p class="slide-desc">Base completa de mais de 60 mil processos do SEI da ANEEL. Coleta di&aacute;ria automatizada de novos processos. Busca por n&uacute;mero, descri&ccedil;&atilde;o ou empresa.</p>
+  <p class="slide-desc"><strong>Mais de 60 mil processos</strong> do SEI da ANEEL. <strong>Coleta diária automatizada</strong> de novos processos. Busca por número, descrição ou empresa.</p>
   <div class="callout-container">
     <img src="screenshots/07_sei_busca.png" alt="SEI Busca">
   </div>
@@ -1091,7 +1092,7 @@
     <span class="badge">M&oacute;dulo</span>
     <h2>SEI &mdash; Timeline e Resumo de Documentos</h2>
   </div>
-  <p class="slide-desc">Timeline cronol&oacute;gica com 310 documentos. Cada documento tem resumo por IA com an&aacute;lise contextualizada. Navega&ccedil;&atilde;o por tipo, data e busca textual.</p>
+  <p class="slide-desc">Timeline cronológica de todos os documentos do processo. Cada documento tem <strong>resumo por IA</strong> com análise contextualizada. Navegação por tipo, data e busca textual.</p>
   <div class="callout-container">
     <img src="prints_mauricio/sei_timeline_resumo.png" alt="SEI Timeline e Resumo">
   </div>
@@ -1107,7 +1108,7 @@
     <span class="badge">Diferencial</span>
     <h2>SEI — Pesquisa por Palavra-chave e Extração Automática</h2>
   </div>
-  <p class="slide-desc">Encontre processos por palavras-chave nas reuniões da ANEEL — funcionalidade inexistente no SEI. Extração completa do processo sem preenchimento manual de CAPTCHA.</p>
+  <p class="slide-desc">Encontre processos por <strong>palavras-chave nas reuniões da ANEEL</strong> — funcionalidade inexistente no SEI. Extração completa do processo <strong>sem preenchimento manual de CAPTCHA</strong>.</p>
   <div class="dual-container">
     <div class="dual-panel">
       <div class="dual-panel-header">
@@ -1152,7 +1153,7 @@
     <span class="badge">M&oacute;dulo</span>
     <h2>Participa&ccedil;&atilde;o Social &mdash; Detalhes e Fases</h2>
   </div>
-  <p class="slide-desc">Vis&atilde;o completa de cada processo com m&uacute;ltiplas fases, modalidade, per&iacute;odo e integra&ccedil;&atilde;o com o processo SEI vinculado.</p>
+  <p class="slide-desc">Visão completa de cada processo com <strong>múltiplas fases</strong>, modalidade, período e <strong>integração com o processo SEI</strong> vinculado.</p>
   <div class="callout-container">
     <img src="prints_mauricio/ps_completa.png" alt="Participa&ccedil;&atilde;o Social Completa">
   </div>
@@ -1197,7 +1198,7 @@
     <span class="badge">Resultados Comprovados</span>
     <h2>Impacto Validado em Ambiente Real</h2>
   </div>
-  <p class="slide-desc">Dados coletados durante operação da plataforma com equipes de regulação de distribuidoras e consultoria regulatória.</p>
+  <p class="slide-desc">Dados coletados durante <strong>operação da plataforma</strong> com equipes de regulação de distribuidoras e consultoria regulatória.</p>
 
   <div class="impacto-table-wrap" style="flex: 1; display: flex; flex-direction: column;">
     <table class="impacto-table">
