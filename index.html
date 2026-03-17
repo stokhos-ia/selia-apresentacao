@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELIA - Apresentação</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --stokhos-blue: #102b4e;
+    --stokhos-navy: #00427a;
+    --stokhos-pink: #d91965;
+    --stokhos-red: #ef405b;
+    --stokhos-dark-grey: #58595b;
+    --stokhos-light-grey: #e6e7e8;
+    --stokhos-gradient: linear-gradient(135deg, #d91965, #ef405b);
+    --slide-width: 1280px;
+    --slide-height: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #d5d5d5; color: var(--stokhos-blue); }
+
+  /* ========== SLIDE BASE ========== */
+  .slide {
+    width: var(--slide-width); height: var(--slide-height);
+    margin: 24px auto; background: white; position: relative; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    page-break-after: always; page-break-inside: avoid;
+  }
+
+  /* Left accent bars (blue top + pink bottom) */
+  .slide::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 50%;
+    background: var(--stokhos-blue); z-index: 20;
+  }
+  .slide::after {
+    content: ''; position: absolute; top: 50%; left: 0; width: 6px; height: 50%;
+    background: var(--stokhos-pink); z-index: 20;
+  }
+
+  /* Dot pattern background for content slides */
+  .slide-dots {
+    background-image: radial-gradient(circle, #d8d8d8 0.8px, transparent 0.8px);
+    background-size: 24px 24px;
+    background-position: 12px 12px;
+  }
+
+  /* Top gradient bar */
+  .slide-topbar {
+    position: absolute; top: 0; left: 6px; right: 0; height: 4px;
+    background: var(--stokhos-gradient); z-index: 15;
+  }
+
+  /* Footer */
+  .slide-footer {
+    position: absolute; bottom: 0; left: 6px; right: 0; height: 40px;
+    background: var(--stokhos-blue); display: flex; align-items: center;
+    justify-content: space-between; padding: 0 36px; z-index: 15;
+  }
+  .slide-footer img { height: 18px; filter: brightness(0) invert(1); }
+  .slide-footer .page-num { color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 500; }
+
+  /* Logo in slide titles */
+  .slide-dots .slide-title {
+    position: relative;
+  }
+  .slide-dots .slide-title::after {
+    content: ''; position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 110px; height: 24px;
+    background: url('logo.png') no-repeat right center/contain;
+  }
+
+  /* Shared badge */
+  .badge {
+    background: var(--stokhos-gradient); color: white; font-size: 10px; font-weight: 700;
+    padding: 3px 12px; border-radius: 16px; text-transform: uppercase; letter-spacing: 0.6px;
+    display: inline-block;
+  }
+
+  /* ========== SLIDE 1: COVER ========== */
+  .cover {
+    background: var(--stokhos-blue);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .cover::before { background: rgba(255,255,255,0.06); }
+  .cover::after { background: var(--stokhos-pink); }
+
+  .cover-bg-pattern {
+    position: absolute; inset: 0; z-index: 1;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(217,25,101,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0,66,122,0.2) 0%, transparent 50%),
+      radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 32px 32px;
+  }
+
+  .cover-content { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; }
+
+  .cover h1 {
+    font-size: 72px; font-weight: 900; color: white; letter-spacing: -3px;
+    line-height: 1.05;
+  }
+  .cover h1 span {
+    background: var(--stokhos-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover .subtitle {
+    color: rgba(255,255,255,0.55); font-size: 22px; font-weight: 300; margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-stats {
+    display: flex; gap: 16px; margin-top: 48px;
+  }
+  .cover-stat-card {
+    background: rgba(255,255,255,0.06); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+    padding: 18px 28px; text-align: center; min-width: 180px;
+  }
+  .cover-stat-card .stat-value {
+    font-size: 32px; font-weight: 800;
+    background: var(--stokhos-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-stat-card .stat-label {
+    color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 500; margin-top: 2px;
+  }
+
+  .cover .date-label {
+    position: absolute; bottom: 36px; z-index: 5;
+    color: rgba(255,255,255,0.35); font-size: 13px;
+    font-weight: 500; letter-spacing: 2px;
+  }
+
+  /* ========== SLIDE 2: CHALLENGE ========== */
+  .challenge-slide { padding: 56px 60px 52px 60px; display: flex; flex-direction: column; }
+
+  .challenge-header { margin-bottom: 28px; }
+  .challenge-header h2 {
+    font-size: 34px; font-weight: 800; letter-spacing: -1px; margin-top: 6px;
+    line-height: 1.15;
+  }
+  .challenge-header h2 span { color: var(--stokhos-pink); }
+
+  .challenge-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1;
+  }
+  .challenge-card {
+    background: white; border: 1.5px solid #e8e8e8; border-radius: 14px;
+    padding: 22px 24px; display: flex; gap: 16px; align-items: center;
+    position: relative;
+  }
+  .challenge-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+  .challenge-card:nth-child(1)::before,
+  .challenge-card:nth-child(2)::before { background: var(--stokhos-pink); }
+  .challenge-card:nth-child(3)::before,
+  .challenge-card:nth-child(4)::before { background: var(--stokhos-blue); }
+
+  .challenge-icon {
+    width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .challenge-icon svg { width: 22px; height: 22px; }
+  .challenge-icon svg path, .challenge-icon svg line, .challenge-icon svg circle,
+  .challenge-icon svg rect, .challenge-icon svg polyline {
+    stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .challenge-card:nth-child(1) .challenge-icon,
+  .challenge-card:nth-child(2) .challenge-icon { background: var(--stokhos-pink); }
+  .challenge-card:nth-child(3) .challenge-icon,
+  .challenge-card:nth-child(4) .challenge-icon { background: var(--stokhos-blue); }
+
+  .challenge-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .challenge-card p { font-size: 13px; color: var(--stokhos-dark-grey); line-height: 1.5; }
+  .challenge-card .pain-stat {
+    font-size: 22px; font-weight: 800; margin-top: 6px; display: block;
+  }
+  .challenge-card:nth-child(1) .pain-stat,
+  .challenge-card:nth-child(2) .pain-stat { color: var(--stokhos-pink); }
+  .challenge-card:nth-child(3) .pain-stat,
+  .challenge-card:nth-child(4) .pain-stat { color: var(--stokhos-blue); }
+
+  .challenge-bottom {
+    margin-top: 20px; background: linear-gradient(135deg, var(--stokhos-blue) 0%, #0d2240 100%);
+    border-radius: 12px; padding: 18px 28px; display: flex; align-items: center;
+    justify-content: space-between;
+  }
+  .challenge-bottom p { color: white; font-size: 15px; font-weight: 500; }
+  .challenge-bottom p span { font-weight: 700; }
+  .challenge-bottom .arrow-badge {
+    background: var(--stokhos-gradient); color: white; font-size: 13px; font-weight: 700;
+    padding: 10px 24px; border-radius: 8px;
+  }
+
+  /* ========== SLIDE 3: OVERVIEW ========== */
+  .overview-slide { padding: 40px 60px 52px 60px; display: flex; flex-direction: column; }
+  .overview-slide .slide-title { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .overview-slide h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+
+  .modules-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px;
+    flex: 1;
+  }
+  .module-card {
+    border: 1.5px solid #e8e8e8; border-radius: 12px; padding: 20px 20px;
+    position: relative; transition: all 0.2s;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .module-card h3 {
+    font-size: 15px; font-weight: 700; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .module-card h3 .icon { width: 22px; height: 22px; flex-shrink: 0; }
+  .module-card h3 .icon path, .module-card h3 .icon line, .module-card h3 .icon circle,
+  .module-card h3 .icon rect, .module-card h3 .icon polyline, .module-card h3 .icon polygon {
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; fill: none;
+  }
+  .module-card p { font-size: 13px; color: var(--stokhos-dark-grey); line-height: 1.5; }
+  .module-card .tag {
+    display: inline-block; margin-top: 10px; font-size: 10px; font-weight: 600;
+    padding: 4px 12px; border-radius: 8px; background: #f0f0f0; color: var(--stokhos-dark-grey);
+  }
+
+  .overview-metrics {
+    display: flex; gap: 14px; margin-top: 16px;
+  }
+  .overview-metric {
+    flex: 1; background: var(--stokhos-blue); border-radius: 10px;
+    padding: 20px 18px; text-align: center; color: white;
+  }
+  .overview-metric .metric-num {
+    font-size: 32px; font-weight: 800;
+    background: var(--stokhos-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .overview-metric .metric-label { font-size: 11px; opacity: 0.7; margin-top: 3px; }
+
+  /* ========== SLIDE 4: ARCHITECTURE DIAGRAM ========== */
+  .diagram-slide { padding: 40px 40px 52px 40px; display: flex; flex-direction: column; align-items: center; }
+  .diagram-slide .slide-title {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 4px; width: 100%;
+  }
+  .diagram-slide h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+  .diagram-slide .slide-desc {
+    font-size: 14px; color: var(--stokhos-dark-grey); margin-bottom: 12px; align-self: flex-start;
+    line-height: 1.5;
+  }
+
+  .diagram-container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%; }
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--stokhos-dark-grey); text-align: center; margin-bottom: 8px;
+  }
+
+  .sources-row { display: flex; justify-content: center; gap: 8px; }
+  .source-card {
+    width: 136px; padding: 12px 6px; background: #f8f9fb; border: 1.5px solid #e0e1e3;
+    border-radius: 10px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .source-card .s-icon { width: 26px; height: 26px; margin-bottom: 5px; }
+  .source-card .s-icon path, .source-card .s-icon line, .source-card .s-icon circle,
+  .source-card .s-icon rect, .source-card .s-icon polyline, .source-card .s-icon polygon,
+  .source-card .s-icon ellipse {
+    stroke: var(--stokhos-dark-grey); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .source-card .s-label { font-size: 10.5px; font-weight: 700; color: var(--stokhos-blue); line-height: 1.2; }
+  .source-card .s-sub { font-size: 8.5px; color: var(--stokhos-dark-grey); margin-top: 2px; }
+
+  .selia-hub { display: flex; justify-content: center; }
+  .selia-box {
+    background: var(--stokhos-gradient); color: white; padding: 14px 56px; border-radius: 14px;
+    text-align: center; box-shadow: 0 4px 20px rgba(217,25,101,0.3);
+  }
+  .selia-box .name { font-size: 26px; font-weight: 800; letter-spacing: 3px; }
+  .selia-box .selia-sub { font-size: 11px; font-weight: 500; opacity: 0.9; margin-top: 2px; }
+
+  .capabilities-row { display: flex; justify-content: center; gap: 8px; }
+  .cap-card {
+    width: 130px; padding: 10px 5px; background: #fff; border: 1.5px solid var(--stokhos-blue);
+    border-radius: 10px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .cap-card .c-icon { width: 20px; height: 20px; margin-bottom: 3px; }
+  .cap-card .c-icon path, .cap-card .c-icon line, .cap-card .c-icon circle,
+  .cap-card .c-icon rect, .cap-card .c-icon polyline {
+    stroke: var(--stokhos-blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .cap-card .c-label { font-size: 9px; font-weight: 600; color: var(--stokhos-blue); line-height: 1.25; }
+
+  .connection-svg { display: block; margin: 0 auto; }
+
+  /* ========== SCREENSHOT WITH CALLOUTS ========== */
+  .callout-slide { padding: 48px 60px 52px 60px; display: flex; flex-direction: column; }
+  .callout-slide .slide-title { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .callout-slide h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+  .callout-slide .slide-desc {
+    font-size: 14px; color: var(--stokhos-dark-grey); line-height: 1.5; margin-bottom: 14px;
+  }
+
+  .callout-container {
+    flex: 1; position: relative; border-radius: 12px; overflow: hidden;
+    border: 1.5px solid #e0e0e0; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .callout-container img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;
+  }
+
+  .callout {
+    position: absolute; display: flex; align-items: flex-start; gap: 8px; z-index: 10;
+  }
+  .callout-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(217,25,101,0.55), rgba(239,64,91,0.55));
+    color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(217,25,101,0.2);
+  }
+  .callout-label {
+    background: rgba(16,43,78,0.45); backdrop-filter: blur(8px);
+    color: rgba(255,255,255,0.9); font-size: 11px; font-weight: 600; padding: 6px 12px;
+    border-radius: 8px; white-space: nowrap; line-height: 1.3;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .callout-label span { display: block; font-weight: 400; font-size: 10px; opacity: 0.75; margin-top: 1px; }
+
+  /* ========== TWO SCREENSHOTS SIDE BY SIDE ========== */
+  .dual-screenshot-slide { padding: 48px 60px 52px 60px; display: flex; flex-direction: column; }
+  .dual-screenshot-slide .slide-title { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .dual-screenshot-slide h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+  .dual-screenshot-slide .slide-desc {
+    font-size: 14px; color: var(--stokhos-dark-grey); line-height: 1.5; margin-bottom: 14px;
+  }
+
+  .dual-container { flex: 1; display: flex; gap: 20px; }
+  .dual-panel {
+    flex: 1; border-radius: 12px; overflow: hidden; border: 1.5px solid #e0e0e0;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column;
+  }
+  .dual-panel-header {
+    padding: 10px 16px; background: var(--stokhos-blue); color: white;
+    font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;
+    text-align: center;
+  }
+  .dual-panel-header svg { width: 16px; height: 16px; }
+  .dual-panel-header svg path, .dual-panel-header svg line, .dual-panel-header svg circle,
+  .dual-panel-header svg rect {
+    stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .dual-panel img {
+    flex: 1; width: 100%; object-fit: cover; object-position: top left; display: block;
+  }
+  .dual-panel.pink-header .dual-panel-header { background: var(--stokhos-pink); }
+
+  /* ========== IMPACT TABLE ========== */
+  .impacto-slide { padding: 48px 60px 52px 60px; display: flex; flex-direction: column; }
+  .impacto-slide .slide-title { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .impacto-slide h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+  .impacto-slide .slide-desc {
+    font-size: 14px; color: var(--stokhos-dark-grey); margin-bottom: 16px; line-height: 1.5;
+  }
+
+  .impacto-table-wrap { flex: 1; display: flex; flex-direction: column; }
+
+  .impacto-table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    border-radius: 12px; overflow: hidden; border: 1.5px solid #e0e0e0; font-size: 13px;
+  }
+  .impacto-table thead th {
+    background: var(--stokhos-blue); color: white; padding: 12px 16px;
+    text-align: left; font-weight: 600; font-size: 12px;
+  }
+  .impacto-table tbody td { padding: 11px 16px; border-bottom: 1px solid #f0f0f0; }
+  .impacto-table tbody tr:last-child td { border-bottom: none; }
+  .impacto-table tbody tr:nth-child(even) { background: #fafafa; }
+  .impacto-table .metric { font-weight: 600; color: var(--stokhos-blue); }
+  .impacto-table .reduction {
+    font-weight: 800; font-size: 15px;
+    background: var(--stokhos-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .impacto-bottom { display: flex; gap: 14px; margin-top: auto; margin-bottom: auto; }
+  .impacto-stat {
+    flex: 1; background: var(--stokhos-blue); border-radius: 12px;
+    padding: 36px 14px; text-align: center; color: white;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+  }
+  .impacto-stat .stat-num {
+    font-size: 32px; font-weight: 800;
+    background: var(--stokhos-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .impacto-stat .stat-label { font-size: 11px; opacity: 0.7; margin-top: 3px; line-height: 1.3; }
+
+  /* ========== BENEFITS ========== */
+  .benefits-slide { padding: 48px 60px 52px 60px; display: flex; flex-direction: column; }
+  .benefits-slide .slide-title { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .benefits-slide h2 { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+
+  .benefit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; flex: 1; }
+  .benefit-card {
+    border-radius: 14px; padding: 24px 26px; display: flex; gap: 18px; align-items: center;
+    border: 1.5px solid transparent; position: relative;
+  }
+  .benefit-card:nth-child(1) { background: rgba(16,43,78,0.04); border-color: rgba(16,43,78,0.1); }
+  .benefit-card:nth-child(2) { background: rgba(217,25,101,0.04); border-color: rgba(217,25,101,0.1); }
+  .benefit-card:nth-child(3) { background: rgba(0,66,122,0.04); border-color: rgba(0,66,122,0.1); }
+  .benefit-card:nth-child(4) { background: rgba(239,64,91,0.04); border-color: rgba(239,64,91,0.1); }
+
+  .benefit-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .benefit-icon svg { width: 24px; height: 24px; }
+  .benefit-icon svg path, .benefit-icon svg line, .benefit-icon svg circle,
+  .benefit-icon svg rect, .benefit-icon svg polyline {
+    stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .benefit-card:nth-child(1) .benefit-icon { background: var(--stokhos-blue); }
+  .benefit-card:nth-child(2) .benefit-icon { background: var(--stokhos-pink); }
+  .benefit-card:nth-child(3) .benefit-icon { background: var(--stokhos-navy); }
+  .benefit-card:nth-child(4) .benefit-icon { background: var(--stokhos-red); }
+
+  .benefit-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+  .benefit-card p { font-size: 13px; color: var(--stokhos-dark-grey); line-height: 1.55; }
+  .benefit-card .benefit-stat {
+    margin-top: 8px; font-size: 20px; font-weight: 800; display: block;
+  }
+  .benefit-card:nth-child(1) .benefit-stat { color: var(--stokhos-blue); }
+  .benefit-card:nth-child(2) .benefit-stat { color: var(--stokhos-pink); }
+  .benefit-card:nth-child(3) .benefit-stat { color: var(--stokhos-navy); }
+  .benefit-card:nth-child(4) .benefit-stat { color: var(--stokhos-red); }
+
+  .benefits-bottom {
+    margin-top: 18px; background: linear-gradient(135deg, var(--stokhos-blue) 0%, #0d2240 100%);
+    border-radius: 12px; padding: 18px 28px; display: flex; align-items: center;
+    justify-content: space-between;
+  }
+  .benefits-bottom p { color: white; font-size: 16px; font-weight: 500; }
+  .benefits-bottom .cta-btn {
+    background: var(--stokhos-gradient); color: white; border: none;
+    padding: 12px 28px; border-radius: 10px; font-size: 14px; font-weight: 700;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+  }
+
+  /* ========== CLOSING ========== */
+  .closing {
+    background: var(--stokhos-blue);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .closing::before { background: rgba(255,255,255,0.06); }
+  .closing::after { background: var(--stokhos-pink); }
+
+  .closing-bg {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      radial-gradient(circle at 30% 70%, rgba(217,25,101,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 70% 30%, rgba(0,66,122,0.2) 0%, transparent 50%);
+  }
+
+  .closing-content { position: relative; z-index: 5; }
+  .closing .logo-main { height: 56px; filter: brightness(0) invert(1); margin-bottom: 32px; }
+  .closing h2 { color: white; font-size: 36px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .closing .tagline {
+    font-size: 18px; font-weight: 400;
+    background: var(--stokhos-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 40px;
+  }
+  .closing .contact-row { display: flex; gap: 40px; color: rgba(255,255,255,0.5); font-size: 14px; }
+  .closing .contact-row span { font-weight: 600; color: white; }
+
+  .closing .closing-footer {
+    position: absolute; bottom: 28px; left: 0; right: 0; z-index: 5;
+    color: rgba(255,255,255,0.25); font-size: 11px; text-align: center;
+  }
+
+  /* ========== PRINT ========== */
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+  @media print {
+    body { background: white; margin: 0; padding: 0; }
+    .slide {
+      margin: 0; box-shadow: none;
+      page-break-after: always;
+      page-break-inside: avoid;
+      break-after: page;
+      break-inside: avoid;
+      width: 1280px; height: 720px;
+    }
+    .slide:last-child { page-break-after: avoid; break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- SLIDE 1: CAPA                                                      -->
+<!-- ================================================================ -->
+<div class="slide cover">
+  <div class="cover-bg-pattern"></div>
+  <div class="cover-content">
+    <img src="icone-dark.png" alt="SELIA" style="height: 90px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: baseline; gap: 0; margin-bottom: 8px;">
+      <span style="color: white; font-size: 56px; font-weight: 700; letter-spacing: -1px;">SEL.</span>
+      <span style="font-size: 56px; font-weight: 800; background: linear-gradient(to right, #d91965, #ef405b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px;">IA</span>
+    </div>
+    <p class="subtitle">a IA Regulatória do Setor Elétrico</p>
+    <div class="cover-stats">
+      <div class="cover-stat-card">
+        <div class="stat-value">60.000+</div>
+        <div class="stat-label">Processos SEI indexados</div>
+      </div>
+      <div class="cover-stat-card">
+        <div class="stat-value">~95%</div>
+        <div class="stat-label">Redu&ccedil;&atilde;o no acompanhamento</div>
+      </div>
+      <div class="cover-stat-card">
+        <div class="stat-value">7+ fontes</div>
+        <div class="stat-label">Integra&ccedil;&atilde;o autom&aacute;tica de dados regulat&oacute;rios</div>
+      </div>
+    </div>
+  </div>
+  <div class="date-label">MAR&Ccedil;O 2026</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 2: O DESAFIO                                                 -->
+<!-- ================================================================ -->
+<div class="slide slide-dots challenge-slide">
+  <div class="slide-topbar"></div>
+  <div class="challenge-header">
+    <span class="badge">O Desafio</span>
+    <h2>A regula&ccedil;&atilde;o do setor el&eacute;trico &eacute; <span>complexa, fragmentada e manual</span></h2>
+  </div>
+  <div class="challenge-grid">
+    <div class="challenge-card">
+      <div class="challenge-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div>
+        <h4>Pesquisa em m&uacute;ltiplas fontes</h4>
+        <p>PRODIST, PRORET, resolu&ccedil;&otilde;es, DOU, SEI, atas de reuni&atilde;o. Informa&ccedil;&otilde;es dispersas em dezenas de portais.</p>
+        <span class="pain-stat">~20 min por consulta</span>
+      </div>
+    </div>
+    <div class="challenge-card">
+      <div class="challenge-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+      </div>
+      <div>
+        <h4>Acompanhamento de processos SEI</h4>
+        <p>Verifica&ccedil;&atilde;o manual processo a processo, com CAPTCHA, sem notifica&ccedil;&otilde;es de atualiza&ccedil;&atilde;o.</p>
+        <span class="pain-stat">~1 min/processo + CAPTCHA</span>
+      </div>
+    </div>
+    <div class="challenge-card">
+      <div class="challenge-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9h4"/><path d="M10 6h8M10 10h8M10 14h4"/></svg>
+      </div>
+      <div>
+        <h4>Monitoramento do DOU</h4>
+        <p>Leitura di&aacute;ria do Di&aacute;rio Oficial em busca de publica&ccedil;&otilde;es relevantes para a distribuidora.</p>
+        <span class="pain-stat">1 a 3 horas por dia</span>
+      </div>
+    </div>
+    <div class="challenge-card">
+      <div class="challenge-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>
+      </div>
+      <div>
+        <h4>An&aacute;lise de reuni&otilde;es ANEEL</h4>
+        <p>V&iacute;deos de 4 a 8 horas de dura&ccedil;&atilde;o, sem transcri&ccedil;&atilde;o, sem indexa&ccedil;&atilde;o por processo.</p>
+        <span class="pain-stat">4-8h de v&iacute;deo + atas</span>
+      </div>
+    </div>
+  </div>
+  <div class="challenge-bottom">
+    <p>Equipes regulat&oacute;rias gastam <span>mais tempo buscando informa&ccedil;&atilde;o do que analisando</span></p>
+    <div class="arrow-badge">SELIA resolve isso</div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">2</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 3: A PLATAFORMA                                              -->
+<!-- ================================================================ -->
+<div class="slide slide-dots overview-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">A Plataforma</span>
+    <h2>Uma plataforma, seis módulos integrados</h2>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card">
+      <h3><svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#d91965"/></svg> Chat Regulat&oacute;rio</h3>
+      <p>Assistente IA treinado em PRODIST, PRORET e normas ANEEL. Respostas com cita&ccedil;&atilde;o de fontes oficiais.</p>
+      <span class="tag">RAG + Deep Search</span>
+    </div>
+    <div class="module-card">
+      <h3><svg class="icon" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9h4" stroke="#00427a"/><path d="M10 6h8M10 10h8M10 14h4" stroke="#00427a"/></svg> Portal Regulat&oacute;rio</h3>
+      <p>Hub centralizado com newsletters di&aacute;rias, DOU, reuni&otilde;es ANEEL e sess&otilde;es p&uacute;blicas.</p>
+      <span class="tag">Atualizado diariamente</span>
+    </div>
+    <div class="module-card">
+      <h3><svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10" stroke="#ef405b"/><line x1="12" y1="20" x2="12" y2="4" stroke="#ef405b"/><line x1="6" y1="20" x2="6" y2="14" stroke="#ef405b"/></svg> Agente BDGD</h3>
+      <p>An&aacute;lise da rede el&eacute;trica em linguagem natural: DEC, FEC, carregamento, fluxo reverso.</p>
+      <span class="tag">14 ferramentas + gr&aacute;ficos</span>
+    </div>
+    <div class="module-card">
+      <h3><svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#102b4e"/><circle cx="9" cy="7" r="4" stroke="#102b4e"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#102b4e"/></svg> Diretores ANEEL</h3>
+      <p>Intelig&ecirc;ncia sobre vota&ccedil;&otilde;es, processos e comportamento de diretores ativos e ex-diretores.</p>
+      <span class="tag">61.372 processos analisados</span>
+    </div>
+    <div class="module-card">
+      <h3><svg class="icon" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="#102b4e"/><rect x="8" y="2" width="8" height="4" rx="1" stroke="#102b4e"/></svg> Processos SEI</h3>
+      <p>Busca inteligente, extra&ccedil;&atilde;o autom&aacute;tica, resumos IA, timeline e alertas por email.</p>
+      <span class="tag">60.000+ processos</span>
+    </div>
+    <div class="module-card">
+      <h3><svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#102b4e"/><circle cx="9" cy="7" r="4" stroke="#102b4e"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#102b4e"/></svg> Participa&ccedil;&atilde;o Social</h3>
+      <p>Acompanhamento de tomadas de subs&iacute;dio, consultas e audi&ecirc;ncias p&uacute;blicas com sumariza&ccedil;&atilde;o IA.</p>
+      <span class="tag">Coleta automatizada</span>
+    </div>
+  </div>
+  <div class="overview-metrics">
+    <div class="overview-metric"><div class="metric-num">60.000+</div><div class="metric-label">Processos SEI indexados</div></div>
+    <div class="overview-metric"><div class="metric-num">400+</div><div class="metric-label">Consultas regulat&oacute;rias realizadas</div></div>
+    <div class="overview-metric"><div class="metric-num">100h+</div><div class="metric-label">Transcri&ccedil;&otilde;es de reuni&otilde;es ANEEL</div></div>
+    <div class="overview-metric"><div class="metric-num">24/7</div><div class="metric-label">Monitoramento autom&aacute;tico</div></div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">3</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 4: ARQUITETURA                                               -->
+<!-- ================================================================ -->
+<div class="slide slide-dots diagram-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <h2>Arquitetura da Plataforma</h2>
+    <span class="badge">Ecossistema Integrado</span>
+  </div>
+  <p class="slide-desc">M&uacute;ltiplas fontes de dados regulat&oacute;rios convergem para a SELIA, que entrega capacidades inteligentes integradas para equipes de regula&ccedil;&atilde;o.</p>
+
+  <div class="diagram-container">
+    <div class="section-label">Fontes de Dados Regulat&oacute;rios</div>
+    <div class="sources-row">
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+        <div class="s-label">SEI / ANEEL</div>
+        <div class="s-sub">Processos administrativos</div>
+      </div>
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9h4"/><path d="M10 6h8M10 10h8M10 14h4"/></svg>
+        <div class="s-label">DOU</div>
+        <div class="s-sub">Di&aacute;rio Oficial da Uni&atilde;o</div>
+      </div>
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <div class="s-label">PRODIST / PRORET</div>
+        <div class="s-sub">Normas e resolu&ccedil;&otilde;es</div>
+      </div>
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <div class="s-label">BDGD</div>
+        <div class="s-sub">Base geogr&aacute;fica da distribui&ccedil;&atilde;o</div>
+      </div>
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>
+        <div class="s-label">Reuni&otilde;es P&uacute;blicas</div>
+        <div class="s-sub">Diretoria ANEEL</div>
+      </div>
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="s-label">Participa&ccedil;&atilde;o Social</div>
+        <div class="s-sub">Consultas e audi&ecirc;ncias</div>
+      </div>
+      <div class="source-card">
+        <svg class="s-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="s-label">Fontes Setoriais</div>
+        <div class="s-sub">Portais e notícias</div>
+      </div>
+    </div>
+
+    <!-- SVG connectors: sources down to merge bar then down to SELIA -->
+    <!-- 7 cards: 136px + 8px gap = 144 per. Total = 7*136+6*8 = 1000. SVG = 1100, offset = (1100-1000)/2 = 50 -->
+    <!-- Centers: 50+68=118, 118+144=262, 262+144=406, 406+144=550, 550+144=694, 694+144=838, 838+144=982 -->
+    <svg class="connection-svg" width="1100" height="36" viewBox="0 0 1100 36">
+      <line x1="118" y1="0" x2="118" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="262" y1="0" x2="262" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="406" y1="0" x2="406" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="550" y1="0" x2="550" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="694" y1="0" x2="694" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="838" y1="0" x2="838" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="982" y1="0" x2="982" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="118" y1="18" x2="982" y2="18" stroke="#58595b" stroke-width="1.2"/>
+      <line x1="550" y1="18" x2="550" y2="34" stroke="#58595b" stroke-width="1.2"/>
+      <polygon points="546,31 550,36 554,31" fill="#58595b"/>
+    </svg>
+
+    <!-- SELIA Hub -->
+    <div class="selia-hub">
+      <div class="selia-box">
+        <div class="name">SELIA</div>
+        <div class="selia-sub">Intelig&ecirc;ncia Artificial do Setor El&eacute;trico</div>
+      </div>
+    </div>
+
+    <!-- SVG connectors: SELIA down to merge bar then down to capabilities -->
+    <!-- 7 cards: 136px + 8px gap = 144 per. Total = 7*136+6*8 = 1000. SVG = 1100, offset = 50 -->
+    <!-- Centers: 118, 262, 406, 550, 694, 838, 982 -->
+    <svg class="connection-svg" width="1100" height="36" viewBox="0 0 1100 36">
+      <line x1="550" y1="0" x2="550" y2="16" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="118" y1="16" x2="982" y2="16" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="118" y1="16" x2="118" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="262" y1="16" x2="262" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="406" y1="16" x2="406" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="550" y1="16" x2="550" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="694" y1="16" x2="694" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="838" y1="16" x2="838" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <line x1="982" y1="16" x2="982" y2="32" stroke="#102b4e" stroke-width="1.2"/>
+      <polygon points="114,29 118,34 122,29" fill="#102b4e"/>
+      <polygon points="258,29 262,34 266,29" fill="#102b4e"/>
+      <polygon points="402,29 406,34 410,29" fill="#102b4e"/>
+      <polygon points="546,29 550,34 554,29" fill="#102b4e"/>
+      <polygon points="690,29 694,34 698,29" fill="#102b4e"/>
+      <polygon points="834,29 838,34 842,29" fill="#102b4e"/>
+      <polygon points="978,29 982,34 986,29" fill="#102b4e"/>
+    </svg>
+
+    <div class="section-label" style="margin-bottom: 5px;">Capacidades Inteligentes</div>
+    <div class="capabilities-row">
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="c-label">Busca Inteligente Regulatória</div>
+      </div>
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <div class="c-label">Acompanhamento Autom. de Processos</div>
+      </div>
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 9l9-6 9 6"/><path d="M3 9a3 3 0 1 0 6 0"/><path d="M15 9a3 3 0 1 0 6 0"/></svg>
+        <div class="c-label">Análise Decisória de Diretores</div>
+      </div>
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <div class="c-label">Alertas Personalizados por Keyword</div>
+      </div>
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div class="c-label">Sumarização Inteligente de Docs</div>
+      </div>
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div class="c-label">Assistente Conversacional</div>
+      </div>
+      <div class="cap-card">
+        <svg class="c-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <div class="c-label">Boletim Diário Curado por IA</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">4</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ================================================================ -->
+<!-- SLIDE 6: PORTAL HOME                                               -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>Portal Regulat&oacute;rio</h2>
+  </div>
+  <p class="slide-desc">Hub centralizado com newsletters di&aacute;rias, reuni&otilde;es da ANEEL, sess&otilde;es p&uacute;blicas e Di&aacute;rio Oficial da Uni&atilde;o.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/portal_home.png" alt="Portal Regulat&oacute;rio Home">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">6</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 7: PORTAL CHAT                                               -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>Portal &mdash; Chat Integrado</h2>
+  </div>
+  <p class="slide-desc">Assistente IA contextualizado ao conte&uacute;do do portal. Fa&ccedil;a perguntas sobre newsletters, reuni&otilde;es e publica&ccedil;&otilde;es do DOU.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/portal_chat_interno.png" alt="Portal Chat Integrado">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">7</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 8: PORTAL DOU + KEYWORDS                                     -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>Portal &mdash; DOU e Alertas por Palavra-chave</h2>
+  </div>
+  <p class="slide-desc">Relatórios do Diário Oficial com análise por IA. Configure palavras-chave e <strong>receba por e-mail sempre que um ato do DOU mencionar seus termos de interesse.</strong></p>
+  <div class="dual-container">
+    <div class="dual-panel" style="flex: 1.4;">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9h4"/><path d="M10 6h8M10 10h8M10 14h4"/></svg>
+        Relatório DOU com resumo por IA
+      </div>
+      <img src="prints_mauricio/portal_dou.png" alt="Portal DOU">
+    </div>
+    <div class="dual-panel pink-header" style="flex: 0.6;">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Alertas por palavra-chave
+      </div>
+      <img src="prints_mauricio/portal_keywords.png" alt="Portal Keywords" style="object-fit: contain; background: #fafafa;">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">8</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 9: PORTAL REUNIOES + SESSOES                                 -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>Portal &mdash; Reuni&otilde;es ANEEL e Sess&otilde;es P&uacute;blicas</h2>
+  </div>
+  <p class="slide-desc">Resumos autom&aacute;ticos de reuni&otilde;es da diretoria da ANEEL e acompanhamento de sess&otilde;es p&uacute;blicas de distribui&ccedil;&atilde;o de processos.</p>
+  <div class="dual-container">
+    <div class="dual-panel pink-header" style="flex: 1.4;">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        Sessão Pública de Sorteio de Processos por Diretor Relator
+      </div>
+      <img src="prints_mauricio/portal_sessoes.png" alt="Portal Sessões Públicas">
+    </div>
+    <div class="dual-panel" style="flex: 0.6;">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>
+        Resumo de Reunião da Diretoria da ANEEL
+      </div>
+      <img src="prints_mauricio/portal_reuniao.png" alt="Portal Reuniões" style="object-fit: contain; background: #fafafa;">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">9</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 10: CHAT FILTROS                                             -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Chat IA</span>
+    <h2>Chat Regulat&oacute;rio &mdash; 84 Documentos Indexados</h2>
+  </div>
+  <p class="slide-desc">Assistente IA com RAG sobre todo o acervo regulat&oacute;rio: PRODIST, PRORET, REN 1.000, leis e decretos. Filtre por documento para respostas direcionadas.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/chat_filtros.png" alt="Chat Regulat&oacute;rio Filtros">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">10</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 11: CHAT DEEP SEARCH + FONTES                               -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Chat IA</span>
+    <h2>Chat &mdash; Deep Search e Fontes Originais</h2>
+  </div>
+  <p class="slide-desc">Modo Deep Search para consultas complexas com racioc&iacute;nio aprofundado. Cada resposta indica os trechos originais dos documentos que basearam a resposta.</p>
+  <div class="dual-container">
+    <div class="dual-panel">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Deep Search Ativado
+      </div>
+      <img src="prints_mauricio/chat_deepsearch.png" alt="Chat Deep Search">
+    </div>
+    <div class="dual-panel pink-header">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Fontes e Trechos Originais
+      </div>
+      <img src="prints_mauricio/chat_fontes.png" alt="Fontes e Cita&ccedil;&otilde;es">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">11</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 12: BDGD PERGUNTAS                                          -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">An&aacute;lise de Dados</span>
+    <h2>Agente BDGD &mdash; Perguntas em Linguagem Natural</h2>
+  </div>
+  <p class="slide-desc">Pergunte livremente sobre qualquer dado da BDGD. O agente seleciona automaticamente a ferramenta adequada entre 14 dispon&iacute;veis.</p>
+  <div class="dual-container">
+    <div class="dual-panel">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        An&aacute;lise de fluxo reverso
+      </div>
+      <img src="prints_mauricio/bdgd_pergunta_fluxo.png" alt="BDGD Pergunta Fluxo" style="object-fit: contain; background: #fafafa;">
+    </div>
+    <div class="dual-panel pink-header">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Top 10 conjuntos DEC
+      </div>
+      <img src="prints_mauricio/bdgd_pergunta_dec.png" alt="BDGD Pergunta DEC" style="object-fit: contain; background: #fafafa;">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">12</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 13: BDGD RESPOSTAS                                          -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">An&aacute;lise de Dados</span>
+    <h2>Agente BDGD &mdash; Respostas com Gr&aacute;ficos</h2>
+  </div>
+  <p class="slide-desc">Gr&aacute;ficos interativos gerados automaticamente a partir dos dados da BDGD. An&aacute;lises comparativas, s&eacute;ries temporais e cruzamento com outros indicadores.</p>
+  <div class="dual-container">
+    <div class="dual-panel">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Curva Carga vs Gera&ccedil;&atilde;o (GD)
+      </div>
+      <img src="prints_mauricio/bdgd_resposta_fluxo.png" alt="BDGD Gr&aacute;fico Fluxo">
+    </div>
+    <div class="dual-panel pink-header">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        DEC Apurado vs Limite ANEEL
+      </div>
+      <img src="prints_mauricio/bdgd_resposta_dec.png" alt="BDGD Gr&aacute;fico DEC">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">13</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 14: DIRETORES VISAO GERAL                                   -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Diretores ANEEL</span>
+    <h2>Diretores ANEEL &mdash; Vis&atilde;o Geral</h2>
+  </div>
+  <p class="slide-desc">61.372 processos de diretores analisados. Distribui&ccedil;&atilde;o tem&aacute;tica, taxas de aprova&ccedil;&atilde;o, tipos de atos administrativos e processos recentes.</p>
+  <div class="callout-container">
+    <img src="screenshots/06_diretores.png" alt="Diretores ANEEL Vis&atilde;o Geral">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">14</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 15: DIRETORES CHAT                                          -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Diretores ANEEL</span>
+    <h2>Diretores &mdash; Chat de An&aacute;lise</h2>
+  </div>
+  <p class="slide-desc">Pergunte sobre posicionamentos, vota&ccedil;&otilde;es e padr&otilde;es decis&oacute;rios dos diretores. Filtre por processo espec&iacute;fico para an&aacute;lises direcionadas.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/dir_chat.png" alt="Diretores Chat">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">15</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 16: DIRETORES TRANSCRICOES                                  -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Diretores ANEEL</span>
+    <h2>Diretores &mdash; Transcri&ccedil;&otilde;es de Reuni&otilde;es</h2>
+  </div>
+  <p class="slide-desc">Transcri&ccedil;&atilde;o autom&aacute;tica com identifica&ccedil;&atilde;o de falantes e timestamps. Mais de 100 horas de reuni&otilde;es transcritas e indexadas por processo.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/dir_transcricoes.png" alt="Diretores Transcrições">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">16</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 17: DIRETORES PROCESSO + VOTOS                              -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Diretores ANEEL</span>
+    <h2>Diretores &mdash; Processos e Votos</h2>
+  </div>
+  <p class="slide-desc">Acompanhamento de processos ao longo de m&uacute;ltiplas reuni&otilde;es. Registro completo do voto e discurso de cada diretor.</p>
+  <div class="dual-container">
+    <div class="dual-panel">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        Detalhe do Processo
+      </div>
+      <img src="prints_mauricio/dir_processo_modal.png" alt="Diretores Processo Modal" style="object-fit: contain; object-position: center center; background: #f0f0f0;">
+    </div>
+    <div class="dual-panel pink-header">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Votos dos Diretores
+      </div>
+      <img src="prints_mauricio/dir_processo_votos.png" alt="Diretores Votos" style="object-fit: contain; object-position: center center; background: #f0f0f0;">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">17</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 18: SEI BUSCA                                               -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>SEI / ANEEL &mdash; Processos Administrativos</h2>
+  </div>
+  <p class="slide-desc">Base completa de mais de 60 mil processos do SEI da ANEEL. Coleta di&aacute;ria automatizada de novos processos. Busca por n&uacute;mero, descri&ccedil;&atilde;o ou empresa.</p>
+  <div class="callout-container">
+    <img src="screenshots/07_sei_busca.png" alt="SEI Busca">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">18</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 19: SEI RELATORIO IA                                        -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">IA Generativa</span>
+    <h2>SEI — Relatório Técnico por IA + Alertas</h2>
+  </div>
+  <p class="slide-desc">Relatório técnico consolidado gerado automaticamente. Clique no sininho para <strong>receber e-mail a cada novo documento</strong> adicionado ao processo — sem precisar verificar manualmente.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/sei_relatorio.png" alt="SEI Relatório IA" style="object-fit: cover; object-position: left top;">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">19</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 20: SEI TIMELINE + RESUMO                                   -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>SEI &mdash; Timeline e Resumo de Documentos</h2>
+  </div>
+  <p class="slide-desc">Timeline cronol&oacute;gica com 310 documentos. Cada documento tem resumo por IA com an&aacute;lise contextualizada. Navega&ccedil;&atilde;o por tipo, data e busca textual.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/sei_timeline_resumo.png" alt="SEI Timeline e Resumo">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">20</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 20b: SEI PESQUISA + EXTRAÇÃO                                -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Diferencial</span>
+    <h2>SEI — Pesquisa por Palavra-chave e Extração Automática</h2>
+  </div>
+  <p class="slide-desc">Encontre processos por palavras-chave nas reuniões da ANEEL — funcionalidade inexistente no SEI. Extração completa do processo sem preenchimento manual de CAPTCHA.</p>
+  <div class="dual-container">
+    <div class="dual-panel">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Busca por palavra-chave nas reuniões
+      </div>
+      <img src="prints_mauricio/sei_pesquisa.png" alt="SEI Pesquisa por Palavra-chave">
+    </div>
+    <div class="dual-panel pink-header">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Extração automática sem CAPTCHA
+      </div>
+      <img src="prints_mauricio/sei_extracao.png" alt="SEI Extração Automática" style="object-fit: contain; object-position: center center; background: #fafafa;">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">21</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 21: PARTICIPACAO SOCIAL LISTAGEM                            -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>Participa&ccedil;&atilde;o Social</h2>
+  </div>
+  <p class="slide-desc">Acompanhamento de Tomadas de Subsídio, Consultas Públicas e Audiências Públicas da ANEEL. Coleta automatizada com sumarização por IA. <strong>Ative o sininho para receber alertas por e-mail a cada novo documento.</strong></p>
+  <div class="callout-container">
+    <img src="screenshots/11_participacao_lista.png" alt="Participação Social Listagem">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">21</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 22: PS DETALHE COM FASES                                    -->
+<!-- ================================================================ -->
+<div class="slide slide-dots callout-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">M&oacute;dulo</span>
+    <h2>Participa&ccedil;&atilde;o Social &mdash; Detalhes e Fases</h2>
+  </div>
+  <p class="slide-desc">Vis&atilde;o completa de cada processo com m&uacute;ltiplas fases, modalidade, per&iacute;odo e integra&ccedil;&atilde;o com o processo SEI vinculado.</p>
+  <div class="callout-container">
+    <img src="prints_mauricio/ps_completa.png" alt="Participa&ccedil;&atilde;o Social Completa">
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">22</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 23: PS RESUMOS IA                                           -->
+<!-- ================================================================ -->
+<div class="slide slide-dots dual-screenshot-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">IA Generativa</span>
+    <h2>Participa&ccedil;&atilde;o Social &mdash; Resumos por IA</h2>
+  </div>
+  <p class="slide-desc">Resumo geral do processo e análise individual de cada documento. <strong>Resumos automáticos das contribuições de cada empresa</strong>, identificando posicionamentos, argumentos-chave e sugestões de alteração.</p>
+  <div class="dual-container">
+    <div class="dual-panel">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        Resumo Geral por IA
+      </div>
+      <img src="prints_mauricio/ps_detalhe_2.png" alt="PS Resumo Geral">
+    </div>
+    <div class="dual-panel pink-header">
+      <div class="dual-panel-header">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Resumo por Documento
+      </div>
+      <img src="prints_mauricio/ps_docs.png" alt="PS Documentos">
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">23</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 24: IMPACTO VALIDADO                                        -->
+<!-- ================================================================ -->
+<div class="slide slide-dots impacto-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Resultados Comprovados</span>
+    <h2>Impacto Validado em Ambiente Real</h2>
+  </div>
+  <p class="slide-desc">Dados coletados durante operação da plataforma com equipes de regulação de distribuidoras e consultoria regulatória.</p>
+
+  <div class="impacto-table-wrap" style="flex: 1; display: flex; flex-direction: column;">
+    <table class="impacto-table">
+      <thead><tr><th style="width:30%">Atividade</th><th style="width:25%">Antes (manual)</th><th style="width:28%">Com SELIA</th><th style="width:17%">Redu&ccedil;&atilde;o</th></tr></thead>
+      <tbody>
+        <tr><td class="metric">Acompanhamento de processos SEI</td><td>~1 min/processo + CAPTCHA</td><td>Instant&acirc;neo (notifica&ccedil;&otilde;es)</td><td class="reduction">~95%</td></tr>
+        <tr><td class="metric">Monitoramento di&aacute;rio do DOU</td><td>1-3h/dia</td><td>Minutos (alertas + keywords)</td><td class="reduction">~90%</td></tr>
+        <tr><td class="metric">Pesquisa regulat&oacute;ria (PRODIST/PRORET)</td><td>~20 min por consulta</td><td>&lt;2 min (busca sem&acirc;ntica)</td><td class="reduction">~80-90%</td></tr>
+        <tr><td class="metric">An&aacute;lise de reuni&otilde;es da diretoria ANEEL</td><td>4-8h de v&iacute;deo + atas</td><td>Transcri&ccedil;&atilde;o diarizada autom&aacute;tica</td><td class="reduction">~80-90%</td></tr>
+        <tr><td class="metric">Elabora&ccedil;&atilde;o de contribui&ccedil;&otilde;es regulat&oacute;rias</td><td>Pesquisa manual em m&uacute;ltiplas fontes</td><td>Busca centralizada + s&iacute;ntese IA</td><td class="reduction">30-50%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="impacto-bottom">
+      <div class="impacto-stat" style="display: flex; flex-direction: column; justify-content: center;"><div class="stat-num">60.000+</div><div class="stat-label">Processos extra&iacute;dos e indexados</div></div>
+      <div class="impacto-stat" style="display: flex; flex-direction: column; justify-content: center;"><div class="stat-num">400+</div><div class="stat-label">Consultas regulat&oacute;rias realizadas</div></div>
+      <div class="impacto-stat" style="display: flex; flex-direction: column; justify-content: center;"><div class="stat-num">7+</div><div class="stat-label">Fontes integradas: DOU, SEI, Reuniões ANEEL, Sessões Públicas, Atas, Portais do setor</div></div>
+      <div class="impacto-stat" style="display: flex; flex-direction: column; justify-content: center;"><div class="stat-num">100h+</div><div class="stat-label">Transcri&ccedil;&otilde;es de reuni&otilde;es ANEEL</div></div>
+    </div>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">24</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 25: BENEFICIOS                                              -->
+<!-- ================================================================ -->
+<div class="slide slide-dots benefits-slide">
+  <div class="slide-topbar"></div>
+  <div class="slide-title">
+    <span class="badge">Benefícios</span>
+    <h2>Por que adotar a SELIA</h2>
+  </div>
+  <div class="benefit-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <h3>Economia de tempo</h3>
+        <p>Reduza horas de pesquisa manual no SEI, DOU e site ANEEL. Resumos IA entregam a ess&ecirc;ncia de cada processo em segundos.</p>
+        <span class="benefit-stat">~95%</span>
+      </div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+      <div>
+        <h3>Antecipa&ccedil;&atilde;o regulat&oacute;ria</h3>
+        <p>Alertas autom&aacute;ticos de novos documentos, audi&ecirc;ncias p&uacute;blicas e mudan&ccedil;as em processos cr&iacute;ticos.</p>
+        <span class="benefit-stat">24/7</span>
+      </div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div>
+        <h3>Chat com suas bases de dados</h3>
+        <p>Interaja via chat para tirar dúvidas sobre BDGD, INDQUAL, documentos regulatórios e processos do SEI — tudo em linguagem natural.</p>
+        <span class="benefit-stat">Chat especializado</span>
+      </div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h3>Compliance rastre&aacute;vel</h3>
+        <p>Cada resposta &eacute; fundamentada em fontes oficiais. Cita&ccedil;&otilde;es verific&aacute;veis nos documentos PRODIST, PRORET e resolu&ccedil;&otilde;es ANEEL.</p>
+        <span class="benefit-stat">100%</span>
+      </div>
+    </div>
+  </div>
+  <div class="benefits-bottom">
+    <p>Pronto para transformar sua &aacute;rea regulat&oacute;ria?</p>
+    <a href="mailto:contato@stokhosia.com.br?subject=Demonstra%C3%A7%C3%A3o%20SELIA&body=Ol%C3%A1%2C%0A%0AGostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20ao%20vivo%20da%20SELIA.%0A%0AObrigado." class="cta-btn" style="text-decoration: none; display: inline-block;">Agendar demonstração</a>
+  </div>
+  <div class="slide-footer"><img src="logo.png" alt="Stokhos"><span class="page-num">25</span></div>
+</div>
+
+<!-- ================================================================ -->
+<!-- SLIDE 26: FECHAMENTO                                              -->
+<!-- ================================================================ -->
+<div class="slide closing">
+  <div class="closing-bg"></div>
+  <div class="closing-content">
+    <img src="logo.png" class="logo-main" alt="Stokhos IA">
+    <h2>Obrigado!</h2>
+    <p class="tagline">Intelig&ecirc;ncia artificial a servi&ccedil;o do setor el&eacute;trico</p>
+    <div class="contact-row">
+      <div><span>contato@stokhosia.com.br</span></div>
+      <div><span>selia.stokhosia.com.br</span></div>
+    </div>
+  </div>
+  <div class="closing-footer">Stokhos IA &mdash; Mar&ccedil;o 2026</div>
+</div>
+
+</body>
+</html>
